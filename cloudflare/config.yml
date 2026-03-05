@@ -1,0 +1,9 @@
+# TEMPLATE — fill these in locally (do not commit credentials)
+tunnel: YOUR_TUNNEL_ID
+credentials-file: /path/to/YOUR_TUNNEL_ID.json
+
+# Import ingress rules from a separate file for clarity
+ingress:
+  - hostname: guild-console.thaleos.network
+    service: https://thaleos-guild-router.onrender.com
+  - service: http_status:404

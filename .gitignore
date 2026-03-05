@@ -1,0 +1,37 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+env/
+.mypy_cache/
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*.json
+
+# Build outputs
+dist/
+build/
+.parcel-cache/
+.next/
+out/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Cloudflared local
+.cloudflared/
