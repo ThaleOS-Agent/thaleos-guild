@@ -1,6 +1,6 @@
 # TEMPLATE — fill these in locally (do not commit credentials)
-tunnel: YOUR_TUNNEL_ID
-credentials-file: /path/to/YOUR_TUNNEL_ID.json
+tunnel: 6d66a347-f70a-4f90-b9f5-7eed7d05573d
+credentials-file: /Users/gee/.cloudflared/6d66a347-f70a-4f90-b9f5-7eed7d05573d.json
 
 # Import ingress rules from a separate file for clarity
 ingress:
