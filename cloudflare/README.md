@@ -1,10 +1,11 @@
-# Cloudflare Tunnel templates (no secrets)
+## Cloudflare named tunnel setup
 
-Files:
-- `config.yml`   → point at your tunnel ID + credentials file path
-- `ingress.yml`  → hostname routing rules (edit upstream services)
+cloudflared tunnel login
+cloudflared tunnel create thaleos-guild
 
-Typical use:
-```bash
+# DNS routes
+cloudflared tunnel route dns thaleos-guild guild-console.thaleos.network
+cloudflared tunnel route dns thaleos-guild utilix-bridge.thaleos.network
+
+# Run (after editing cloudflare/config.yml)
 cloudflared tunnel --config cloudflare/config.yml run
-```
