@@ -1,0 +1,15 @@
+[Unit]
+Description=UTILIX Agent Bridge (FastAPI)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/thaleos/utilix_bridge
+EnvironmentFile=/opt/thaleos/utilix_bridge/.env
+ExecStart=/opt/thaleos/utilix_bridge/.venv/bin/uvicorn main:app --host 127.0.0.1 --port 8080
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
