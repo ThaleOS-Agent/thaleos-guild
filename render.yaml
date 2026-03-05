@@ -19,7 +19,7 @@ services:
     name: thaleos-guild-router
     env: node
     rootDir: router
-    buildCommand: npm ci
+    buildCommand: npm install
     startCommand: node server.js
     autoDeploy: true
     healthCheckPath: /health
