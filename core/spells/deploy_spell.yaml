@@ -1,0 +1,19 @@
+name: deploy_system
+
+description: Deploy application infrastructure
+
+chain:
+  - agent: UTILIX
+    task: "prepare deployment pipeline"
+
+  - agent: SCRIBE
+    task: "generate deployment documentation"
+
+  - agent: PHANTOM
+    task: "perform security scan"
+
+  - agent: CHRONAGATE
+    task: "schedule deployment window"
+
+  - agent: UTILIX
+    task: "deploy containers to infrastructure"

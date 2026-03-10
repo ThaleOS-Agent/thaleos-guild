@@ -1,0 +1,95 @@
+openapi: 3.1.0
+info:
+  title: OpenAI API
+  description: API for generating text completions using OpenAI models.
+  version: 1.0.0
+servers:
+  - url: https://api.openai.com/v1
+    description: OpenAI API server
+paths:
+  /completions:
+    post:
+      operationId: createCompletion
+      summary: Generates a completion for the given prompt.
+      description: Sends a prompt to OpenAI's model and returns a completion.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model:
+                  type: string
+                  example: "text-davinci-003"
+                  description: The model to use for completion.
+                prompt:
+                  type: string
+                  description: The input prompt for the model.
+                max_tokens:
+                  type: integer
+                  example: 100
+                  description: The maximum number of tokens to generate.
+                temperature:
+                  type: number
+                  format: float
+                  example: 0.7
+                  description: Sampling temperature; higher values produce more randomness.
+      responses:
+        '200':
+          description: Successful completion response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Unique identifier for the completion request.
+                  object:
+                    type: string
+                    example: "text_completion"
+                  created:
+                    type: integer
+                    description: Timestamp of completion creation.
+                  model:
+                    type: string
+                    description: Model used for generating the response.
+                  choices:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        text:
+                          type: string
+                          description: Generated text completion.
+                        index:
+                          type: integer
+                        finish_reason:
+                          type: string
+                          description: Reason for stopping the generation.
+                  usage:
+                    type: object
+                    properties:
+                      prompt_tokens:
+                        type: integer
+                      completion_tokens:
+                        type: integer
+                      total_tokens:
+                        type: integer
+        '400':
+          description: Bad request, possibly due to missing parameters.
+        '401':
+          description: Unauthorized, invalid API key.
+        '429':
+          description: Rate limit exceeded.
+security:
+  - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

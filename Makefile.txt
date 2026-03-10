@@ -1,0 +1,27 @@
+SHELL := /bin/bash
+
+.PHONY: bootstrap up down logs smoke api utilix web
+
+bootstrap:
+	cp -n .env.example .env || true
+
+up:
+	podman compose -f podman-compose.yml up -d --build
+
+down:
+	podman compose -f podman-compose.yml down
+
+logs:
+	podman compose -f podman-compose.yml logs -f --tail=200
+
+smoke:
+	./scripts/smoke_test.sh
+
+api:
+	cd api && uvicorn thaleos_api.main:app --host 0.0.0.0 --port 8080 --reload
+
+utilix:
+	cd utilix && python -m thaleos_utilix.daemon
+
+web:
+	cd web && npm i && npm run dev

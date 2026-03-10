@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: containers/Containerfile.api
+    env_file: .env
+    ports:
+      - "8080:8080"
+    depends_on:
+      - utilix
+
+  utilix:
+    build:
+      context: .
+      dockerfile: containers/Containerfile.utilix
+    env_file: .env
+    ports:
+      - "8787:8787"
+
+  web:
+    build:
+      context: .
+      dockerfile: containers/Containerfile.web
+    env_file: .env
+    ports:
+      - "5173:80"
+    depends_on:
+      - api

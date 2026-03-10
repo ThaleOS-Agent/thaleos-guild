@@ -1,0 +1,24 @@
+{
+  "agents": [
+    {
+      "name": "UTILIX",
+      "role": "system_orchestrator",
+      "port": 9101
+    },
+    {
+      "name": "Guardian",
+      "role": "security_monitor",
+      "port": 9102
+    },
+    {
+      "name": "ChronaGate",
+      "role": "scheduler",
+      "port": 9103
+    },
+    {
+      "name": "MemoryCore",
+      "role": "vector_memory",
+      "port": 9104
+    }
+  ]
+}

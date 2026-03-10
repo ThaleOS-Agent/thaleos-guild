@@ -1,0 +1,47 @@
+{
+  "spells": [
+    {
+      "name": "harmonic_protocol",
+      "phrases": [
+        "activate harmonic protocol",
+        "activate full harmonic resonance",
+        "hello thaleos activate harmonic"
+      ],
+      "agent": "utilix",
+      "action": "activate_system"
+    },
+
+    {
+      "name": "guardian_scan",
+      "phrases": [
+        "guardian scan",
+        "scan system",
+        "guardian scan the perimeter"
+      ],
+      "agent": "guardian",
+      "action": "scan_system"
+    },
+
+    {
+      "name": "scribe_document",
+      "phrases": [
+        "scribe draft document",
+        "generate report",
+        "create legal document"
+      ],
+      "agent": "scribe",
+      "action": "generate_document"
+    },
+
+    {
+      "name": "sage_research",
+      "phrases": [
+        "sage research",
+        "research topic",
+        "deep research"
+      ],
+      "agent": "sagequery",
+      "action": "research"
+    }
+  ]
+}

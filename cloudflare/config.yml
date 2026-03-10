@@ -8,6 +8,10 @@ ingress:
 
   - hostname: utilix-bridge.thaleos.network
     service: http://127.0.0.1:8090
+  
+# Router API
+  - hostname: router.thaleos.network
+    service: http://localhost:8000
 
   - service: http_status:404
 

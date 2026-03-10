@@ -1,0 +1,28 @@
+[
+  {
+    "name": "Utilix Bridge Access",
+    "decision": "allow",
+    "include": [
+      { "email": { "email": "Admin@teakanetwork.com" } },
+      { "email": { "email": "support@thaleos.network" } },
+      { "email": { "email": "empress@thaleos.network" } }
+    ],
+    "require": [
+      { "mfa": { "provider": "totp" } }
+    ],
+    "exclude": []
+  },
+  {
+    "name": "Guild Console Access",
+    "decision": "allow",
+    "include": [
+      { "email": { "email": "Admin@teakanetwork.com" } },
+      { "email": { "email": "support@thaleos.network" } },
+      { "email": { "email": "empress@thaleos.network" } }
+    ],
+    "require": [
+      { "mfa": { "provider": "totp" } }
+    ],
+    "exclude": []
+  }
+]

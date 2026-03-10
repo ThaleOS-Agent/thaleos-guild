@@ -1,0 +1,73 @@
+version: 1
+
+spells:
+  - id: harmonic_awaken
+    name: "Harmonic Awaken"
+    triggers:
+      - "activate harmonic protocol"
+      - "awaken thaleos"
+      - "activate full harmonic resonance"
+    intent: "system.start"
+    chain:
+      - step: registry.ensure
+        agent: guardian
+        action: ensure_registry
+      - step: utilix.ping
+        agent: utilix
+        action: health
+      - step: utilix.sync
+        agent: utilix
+        action: sync
+      - step: swarm.brief
+        agent: sagequery
+        action: brief_status
+        uses_memory:
+          - "last_boot_outcome"
+          - "preferred_modes"
+      - step: scribe.log
+        agent: scribe
+        action: write_log
+        input:
+          template: "boot_log_v1"
+
+  - id: guardian_scan
+    name: "Guardian Scan"
+    triggers:
+      - "guardian scan"
+      - "scan system"
+      - "audit system"
+    intent: "security.scan"
+    chain:
+      - step: guardian.scan
+        agent: guardian
+        action: scan_system
+      - step: utilix.snapshot
+        agent: utilix
+        action: snapshot
+      - step: scribe.report
+        agent: scribe
+        action: generate_report
+        collaborate_with:
+          - agent: sagequery
+            action: summarize_risks
+
+  - id: scribe_generate
+    name: "Scribe Generate"
+    triggers:
+      - "generate report"
+      - "draft document"
+      - "write memo"
+    intent: "doc.generate"
+    chain:
+      - step: memory.fetch_context
+        agent: guardian
+        action: fetch_context
+      - step: scribe.compose
+        agent: scribe
+        action: compose
+        uses_memory:
+          - "writing_style"
+          - "project_context"
+      - step: guardian.compliance
+        agent: guardian
+        action: compliance_check
