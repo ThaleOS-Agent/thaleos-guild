@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: thaleos-api
+    env: python
+    rootDir: api
+    buildCommand: pip install -U pip && pip install -r requirements.txt
+    startCommand: uvicorn thaleos_api.main:app --host 0.0.0.0 --port $PORT
+    autoDeploy: true
+    healthCheckPath: /health
+
+  - type: web
+    name: thaleos-web
+    env: docker
+    rootDir: .
+    dockerfilePath: containers/Containerfile.web
+    autoDeploy: true
